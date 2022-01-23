@@ -10,7 +10,6 @@ const handleRegister = (req,res,db,bcrypt) =>{
     // });
     console.log('inside register, before transaction')
     db.transaction(trx => {
-        console.log('inside transaction')
         trx.insert({
             hash: hash,
             email: email,
@@ -26,7 +25,6 @@ const handleRegister = (req,res,db,bcrypt) =>{
                 name: name,
                 joined: new Date()
             }).then(user => {
-                console.log('inside server ', user)
                 res.json(user[0])
             })
             

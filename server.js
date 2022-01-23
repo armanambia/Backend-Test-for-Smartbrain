@@ -26,12 +26,7 @@ app.use(cors())
 
 
 app.get('/', (req, res)=> {
-    db.select('*').from('users')
-        .then(user=> {
-            console.log(user)
-            res.json(user)
-        })
-        .catch(err => res.status(400).json('unable to get'))
+    res.json('success')
 })
 
 app.post('/signin', (req, res) => {signin.handleSignin(req,res,db,bcrypt)})
@@ -51,4 +46,3 @@ app.listen(PORT || 3000, ()=> {
     console.log(`app is running on port ${PORT}`)
 })
 
-console.log(PORT)
