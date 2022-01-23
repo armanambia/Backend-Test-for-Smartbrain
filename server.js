@@ -24,7 +24,12 @@ app.use(cors())
 
 
 app.get('/', (req, res)=> {
-    res.send('success')
+    db.select('*').from('users')
+        .then(user=> {
+            console.log(user)
+            res.json(user)
+        })
+        .catch(err => res.status(400).json('unable to get'))
 })
 
 app.post('/signin', (req, res) => {signin.handleSignin(req,res,db,bcrypt)})
