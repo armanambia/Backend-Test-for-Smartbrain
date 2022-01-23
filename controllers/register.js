@@ -9,6 +9,7 @@ const handleRegister = (req,res,db,bcrypt) =>{
         // Store hash in your password DB.
     });
     db.transaction(trx => {
+        console.log('inside transaction')
         trx.insert({
             hash: hash,
             email: email,
