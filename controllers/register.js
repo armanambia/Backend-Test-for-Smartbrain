@@ -5,9 +5,10 @@ const handleRegister = (req,res,db,bcrypt) =>{
         return res.status(400).json('incorrect form submission')
     }
     const hash = bcrypt.hashSync(password)
-    bcrypt.hash(password, null, null, function(err, hash) {
-        // Store hash in your password DB.
-    });
+    // bcrypt.hash(password, null, null, function(err, hash) {
+    //     // Store hash in your password DB.
+    // });
+    console.log('inside register, before transaction')
     db.transaction(trx => {
         console.log('inside transaction')
         trx.insert({
